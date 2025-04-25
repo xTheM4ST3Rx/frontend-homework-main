@@ -1,6 +1,7 @@
 import { listar_propostas } from "@/services/proposals/proposals.service";
 import { ProposalStatus } from "@/services/proposals/types";
 import { useQuery } from "@tanstack/react-query";
+import { CopyPlus } from "lucide-react";
 
 export default function Propostas() {
   const proposals = useQuery({
@@ -10,6 +11,18 @@ export default function Propostas() {
 
   return (
     <div>
+      <div className="p-2 ">
+        <div className="rounded-md p-2 flex justify-between items-center bg-base-200">
+          <div className="text-2xl">
+            Resultados: {proposals.data?.data.length}
+          </div>
+          <button className="btn btn-accent">
+            <CopyPlus />
+            Criar Proposta
+          </button>
+        </div>
+      </div>
+
       <div className="overflow-x-auto p-2 ">
         <table className="table table-zebra  bg-base-200">
           {/* head */}
