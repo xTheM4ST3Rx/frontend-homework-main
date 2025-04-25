@@ -7,7 +7,7 @@ import { DashStats } from "./dashboard";
 const sidebarItems = [
   {
     name: "Overview",
-    link: "/",
+    link: "/dashboard",
     active: true,
     icon: <Wallpaper />,
   },
