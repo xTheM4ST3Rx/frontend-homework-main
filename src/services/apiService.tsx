@@ -8,6 +8,10 @@ class ApiService {
   constructor() {
     this.axiosInstance = axios.create({
       baseURL: this.baseURL,
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
     });
   }
 

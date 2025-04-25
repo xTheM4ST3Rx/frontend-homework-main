@@ -1,4 +1,4 @@
-const env = new String(import.meta.env.VITE_ENV || "localhost");
+const env = new String(import.meta.env.VITE_ENV);
 
 type Config = {
   apiEndPoint: string;
@@ -7,15 +7,9 @@ type Config = {
 export let config = {} as Config;
 
 switch (env.toString()) {
-  case "localhost":
-    config = {
-      apiEndPoint: "http://localhost:3005",
-    };
-    break;
-
   case "dev":
     config = {
-      apiEndPoint: "....",
+      apiEndPoint: "http://localhost:3005",
     };
     break;
 
