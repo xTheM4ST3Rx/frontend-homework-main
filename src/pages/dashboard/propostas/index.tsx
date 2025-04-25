@@ -1,7 +1,7 @@
 import { listar_propostas } from "@/services/proposals/proposals.service";
 import { ProposalStatus } from "@/services/proposals/types";
 import { useQuery } from "@tanstack/react-query";
-import { CopyPlus } from "lucide-react";
+import { CheckCheck, CopyPlus } from "lucide-react";
 
 export default function Propostas() {
   const proposals = useQuery({
@@ -16,8 +16,9 @@ export default function Propostas() {
           <div className="text-2xl">
             Resultados: {proposals.data?.data.length}
           </div>
-          <button className="btn btn-accent">
-            <CopyPlus />
+
+          <button className="btn btn-info btn-xs">
+            <CopyPlus className="size-2" />
             Criar Proposta
           </button>
         </div>
@@ -33,6 +34,7 @@ export default function Propostas() {
               <th>Data de Criação</th>
               <th>Data de Atualização</th>
               <th>Status</th>
+              <th>Ações</th>
             </tr>
           </thead>
           <tbody className="even:bg-base-300">
@@ -56,6 +58,16 @@ export default function Propostas() {
                       <div className="badge badge-info">Recusada</div>
                     )}
                   </td>
+
+                  {proposal.status == ProposalStatus.PENDING ? (
+                    <td>
+                      <button className="btn btn-xs btn-success btn-outline">
+                        <CheckCheck className="size-3" /> Aprovar
+                      </button>
+                    </td>
+                  ) : (
+                    <td></td>
+                  )}
                 </tr>
               ))}
             {/* row 2 */}
