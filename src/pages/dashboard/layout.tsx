@@ -1,8 +1,9 @@
 import { Navigate, Route, Routes } from "react-router";
 import Propostas from "./propostas";
 import Drawer from "@/components/drawer";
-import { HandHelping, Wallpaper } from "lucide-react";
+import { FileStack, HandHelping, Wallpaper } from "lucide-react";
 import { DashStats } from "./dashboard";
+import Docs from "./docs";
 
 const sidebarItems = [
   {
@@ -17,6 +18,12 @@ const sidebarItems = [
     active: true,
     icon: <HandHelping />,
   },
+  {
+    name: "API Docs",
+    link: "/docs",
+    active: true,
+    icon: <FileStack />,
+  },
 ];
 
 export function DashboardLayout() {
@@ -26,9 +33,9 @@ export function DashboardLayout() {
         <Route path="/" element={<Navigate to="/dashboard" />} />
         <Route path="/dashboard" element={<DashStats />} />
 
-        {/* Propostas */}
-
         <Route path="/propostas" element={<Propostas />} />
+
+        <Route path="/docs" element={<Docs />} />
 
         <Route path="/*" element={<Navigate to="/" />} />
       </Routes>

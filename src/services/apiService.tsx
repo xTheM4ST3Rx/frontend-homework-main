@@ -11,6 +11,7 @@ class ApiService {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        user_id: "1", //USER DEFINIDO
       },
     });
   }

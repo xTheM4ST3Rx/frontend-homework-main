@@ -14,6 +14,26 @@ Depois para rodar
 npm run dev
 ```
 
+OBSERVAÇÃO: no front esta definido o ID 1, basta alterar em:
+src/services/apiService.ts
+
+```ts
+class ApiService {
+  private readonly axiosInstance: AxiosInstance;
+  private readonly baseURL: string = config.apiEndPoint;
+
+  constructor() {
+    this.axiosInstance = axios.create({
+      baseURL: this.baseURL,
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        user_id: "1", //USER DEFINIDO
+      },
+    });
+  }
+```
+
 Resultado esperado
 
 ![alt text](/src/assets/image.png)
