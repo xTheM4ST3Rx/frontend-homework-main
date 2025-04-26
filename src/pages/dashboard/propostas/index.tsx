@@ -9,6 +9,10 @@ export default function Propostas() {
     queryFn: listar_propostas,
   });
 
+  const handlerDontWork = () => {
+    alert("Não implementado ainda!");
+  };
+
   return (
     <div>
       <div className="p-2 ">
@@ -17,7 +21,7 @@ export default function Propostas() {
             Resultados: {proposals.data?.data.length}
           </div>
 
-          <button className="btn btn-info btn-xs">
+          <button className="btn btn-info btn-xs" onClick={handlerDontWork}>
             <CopyPlus className="size-2" />
             Criar Proposta
           </button>

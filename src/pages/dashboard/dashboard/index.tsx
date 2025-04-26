@@ -39,12 +39,17 @@ export function DashStats() {
     queryFn: () => listar_best_users(dateStart, dateEnd),
   });
 
+  const resetDate = () => {
+    setDateStart(new Date("2017-10-01"));
+    setDateEnd(new Date());
+  };
+
   return (
     <div>
-      <div className="flex gap-2 p-2">
+      <div className="flex gap-2 p-2 flex-wrap flex-col-reverse sm:flex-row">
         <div className="flex-1">
           <div className="p-2 bg-base-200 mb-2 font-bold rounded-md">
-            Profit por Status
+            Profit por Status:
           </div>
 
           <div className="overflow-x-auto">
@@ -90,10 +95,14 @@ export function DashStats() {
           <div className="p-2 bg-base-200 mb-2 font-bold rounded-md flex justify-between items-center">
             Profit por Status:
             <div className="flex gap-2 ">
+              <button className="btn btn-xs btn-info" onClick={resetDate}>
+                Todo Periodo
+              </button>
+
               <input
                 className="input input-xs"
                 type="date"
-                defaultValue={dateStart.toISOString().split("T")[0]}
+                value={dateStart.toISOString().split("T")[0]}
                 onChange={(e) => {
                   const date = new Date(e.target.value);
                   setDateStart(date);
@@ -102,7 +111,7 @@ export function DashStats() {
               <input
                 className="input input-xs"
                 type="date"
-                defaultValue={dateEnd.toISOString().split("T")[0]}
+                value={dateEnd.toISOString().split("T")[0]}
                 onChange={(e) => {
                   const date = new Date(e.target.value);
                   setDateEnd(date);
@@ -154,34 +163,40 @@ export function DashStats() {
             </table>
           </div>
 
-          <div className="flex gap-2 flex-col mt-2">
-            <div className="stats shadow bg-base-200">
-              <div className="stat">
-                <div className="stat-title">Total Users</div>
-                <div className="stat-value">
-                  {usuarios.data?.data.length || 0}
-                </div>
-                <div className="stat-desc"> total de usuários</div>
-              </div>
+          <div className=" mt-2 ">
+            <div className="p-2 bg-base-200 font-bold rounded-md ">
+              Stats Gerais:
             </div>
 
-            <div className="stats shadow ">
-              <div className="stat bg-base-200">
-                <div className="stat-title">Total Proposals</div>
-                <div className="stat-value">
-                  {proposals.data?.data.length || 0}
+            <div className="flex gap-2 mt-2 sm:flex-col justify-between">
+              <div className="stats shadow bg-base-200">
+                <div className="stat">
+                  <div className="stat-title">Total Users</div>
+                  <div className="stat-value">
+                    {usuarios.data?.data.length || 0}
+                  </div>
+                  <div className="stat-desc"> total de usuários</div>
                 </div>
-                <div className="stat-desc">Total de propostas</div>
               </div>
-            </div>
 
-            <div className="stats shadow ">
-              <div className="stat bg-base-200">
-                <div className="stat-title">Total Costumers</div>
-                <div className="stat-value">
-                  {clientes.data?.data.length || 0}
+              <div className="stats shadow ">
+                <div className="stat bg-base-200">
+                  <div className="stat-title">Total Proposals</div>
+                  <div className="stat-value">
+                    {proposals.data?.data.length || 0}
+                  </div>
+                  <div className="stat-desc">Total de propostas</div>
                 </div>
-                <div className="stat-desc">Total de clientes</div>
+              </div>
+
+              <div className="stats shadow ">
+                <div className="stat bg-base-200">
+                  <div className="stat-title">Total Costumers</div>
+                  <div className="stat-value">
+                    {clientes.data?.data.length || 0}
+                  </div>
+                  <div className="stat-desc">Total de clientes</div>
+                </div>
               </div>
             </div>
           </div>

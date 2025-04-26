@@ -1,4 +1,4 @@
-import { BanknoteArrowUp, TableOfContents } from "lucide-react";
+import { BanknoteArrowUp, LogOut, TableOfContents } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router";
 
 type DrawerProps = {
@@ -16,6 +16,11 @@ export default function Drawer({ children, sidebarItems }: DrawerProps) {
 
   const navigate = useNavigate();
   const splitPath = pathname.split("/").filter((item) => item !== "");
+
+  const handlerDontWork = () => {
+    alert("Não implementado ainda!");
+  };
+
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -136,7 +141,7 @@ export default function Drawer({ children, sidebarItems }: DrawerProps) {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu bg-base-200 min-h-full w-80 p-4">
+        <ul className="menu bg-base-200 min-h-full w-80 p-4 ">
           {/* Sidebar content here */}
 
           <div className="flex gap-2 pb-5">
@@ -169,6 +174,16 @@ export default function Drawer({ children, sidebarItems }: DrawerProps) {
               </li>
             );
           })}
+
+          <button
+            className="flex items-center gap-2 mt-auto hover:underline cursor-pointer"
+            onClick={handlerDontWork}
+          >
+            <div className="text-lg text-blue-500">
+              <LogOut />
+            </div>
+            <div className="text-lg">Sair</div>
+          </button>
         </ul>
       </div>
     </div>
